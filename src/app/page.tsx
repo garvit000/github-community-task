@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
 import AuthForm from '@/components/AuthForm';
@@ -11,6 +11,12 @@ export default function Home() {
   const [isLogin, setIsLogin] = useState(true);
   const { user, loading } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user && !loading) {
+      router.push('/blog');
+    }
+  }, [user, loading, router]);
 
   if (loading) {
     return (
@@ -25,7 +31,6 @@ export default function Home() {
   }
 
   if (user) {
-    router.push('/blog');
     return null;
   }
 
