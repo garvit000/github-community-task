@@ -2,6 +2,9 @@
 
 A beautiful, full-stack blog application built with Next.js, Firebase, and stunning animations using GSAP and Three.js.
 
+## Latest Update
+Fixed TypeScript/ESLint errors for successful Vercel deployment.
+
 ## Features
 
 - 🔐 **User Authentication** - Sign up and login with Firebase Auth
