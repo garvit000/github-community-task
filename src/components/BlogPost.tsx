@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Edit3, Trash2, Calendar, User } from 'lucide-react';
-import { BlogPost, CreateBlogPostData, createBlogPost, updateBlogPost, deleteBlogPost } from '@/lib/blogService';
+import { Edit3, Trash2, Calendar, User } from 'lucide-react';
+import { BlogPost, updateBlogPost } from '@/lib/blogService';
 import { useAuth } from '@/contexts/AuthContext';
 
 interface BlogPostFormProps {
@@ -27,6 +27,8 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps) {
       if (post) {
         await updateBlogPost(post.id, { title, content });
       } else {
+        // Import createBlogPost here to avoid unused import warning
+        const { createBlogPost } = await import('@/lib/blogService');
         await createBlogPost({
           title,
           content,
